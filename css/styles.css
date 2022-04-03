@@ -1,0 +1,863 @@
+/* CSS reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1rem;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Site CSS */
+html,
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+:root {
+  --orange-500: #ff8400;
+  --orange-600: #b25519;
+  --purple-500: #702380;
+  --purple-600: #51205e;
+  --purple-650: #542360;
+  --gray-400: #f8f8f8;
+  --gray-500: #b9b8af;
+  --gray-600: #8f8f8f;
+  --green-500: #87c047;
+  --green-600: #51991a;
+}
+
+/* FONTS 
+  Button:
+    - label: opensans semibold 12pt
+    Gradient:
+      angle: 90deg
+      from: #8bc34a
+      to: #4d9617
+  Header:
+    - links: opensans semibold 13pt
+  Section:
+    - title: pangram black 24pt
+      Gradient:
+        from: #56205c
+        step[26%]: #51265e
+        to: #ba5913
+  Pricing:
+    - title: pangram black 20pt
+    - content: opensans regular 12pt
+    - price: opensans bold 35.75pt 16.94pt
+    - qtd: myriad pro regular 12.23pt
+    Button:
+      - label: opensans semibold 12pt
+      Gradient:
+        angle: -176deg
+        from: #8bc34a
+        to: #4d9617
+    Kit 1:
+      fill: #b9b8af
+    Kit 2:
+      fill: #702380
+    Kit 3:
+      fill: #ff860c
+  Benefits:
+    - title: pangram black 24pt
+    - content: pangram regular 13pt
+    - list: pangram bold 13pt
+    - check: fontawesome 8pt
+    - button: opensans semibold 12pt
+    Gradient:
+      angle: -45deg
+      from: #ffc859
+      to: #f5802a
+  Satisfaction:
+    fill = #ececeb
+    - content: pangram regular 13pt
+    - title: pangram black 20pt
+    Button:
+      - label: opensans semibold 12pt
+      Gradient:
+        angle: -23deg
+        from: #8bc34a
+        to: #4d9617
+  Instagram:
+    - button: opensans bold 12pt
+    - content: pangram black 47pt
+  Quem Somos:
+    - content: pangram regular 13pt
+    - button: opensans bold 12pt
+      Gradient:
+        angle: -19deg
+        from: #8bc34a
+        to: #4d9617
+  Footer:
+    - copy: opensans regular 11pt
+    - left:
+      - content: opensans regular 13pt
+      - social text: pangram bold 14pt
+    - right:
+      - title: pangram bold 14pt
+      - content: opensans light 13pt
+  Como Funciona:
+    - content: pangram regular 13pt
+    - topic title: pangram bold 14pt
+  Vantagens:
+    h = 265px
+    gap = 65px
+    - content: pangram light 14.68pt
+      - highlight: pangram bold 14.68pt
+  FAQ:
+    fill = #f8f8f8
+    - accordion title: pangram regular 13pt
+
+
+
+POPUP NEWSLETTER:
+  border radius = 500px
+  Button:
+    fill = #4d9617
+    - label: opensans semibold 112.72pt
+  - title: pangram black 348.36pt
+  - content: pangram regular 122.12pt
+  - input: pangram regular 122.12pt
+  Close:
+    fill = black
+    - x: pangram black 177.41pt
+
+*/
+.button {
+  --gradient-angle: 0deg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 5.5rem;
+  padding: 1rem;
+  margin-inline: auto;
+  border-radius: 100rem;
+  background-image: linear-gradient(var(--gradient-angle), #8fc75d, #579530);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  transition: filter 0.2s ease;
+}
+.button.light {
+  max-width: 8rem;
+  margin-inline: 0;
+  background: none;
+  font-weight: 600;
+  border: 2px solid white;
+  border-radius: 2000rem;
+}
+.button:hover, .button:focus {
+  filter: brightness(0.8);
+}
+
+header.hero {
+  min-height: 70vh;
+  padding-inline: 4rem;
+  background-image: url("/assets/banner_header.png"), linear-gradient(0deg, #f5802a, #f69134);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
+header.hero .hero-navbar {
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  gap: 10rem;
+  max-height: 100px;
+  padding-block: 3rem;
+}
+header.hero .hero-navbar .hero-navbar-left {
+  position: relative;
+}
+header.hero .hero-navbar nav.hero-navbar-right {
+  text-transform: uppercase;
+}
+header.hero .hero-navbar nav.hero-navbar-right ul {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  height: 100%;
+}
+header.hero .hero-navbar nav.hero-navbar-right ul a {
+  transition: filter 0.2s ease;
+}
+header.hero .hero-navbar nav.hero-navbar-right ul a:hover, header.hero .hero-navbar nav.hero-navbar-right ul a:focus {
+  filter: brightness(0.7);
+}
+
+main section {
+  padding: 3.5rem 4rem;
+}
+main section .container {
+  max-width: 1440px;
+  position: relative;
+  margin-inline: auto;
+}
+main section .section-title {
+  width: fit-content;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  letter-spacing: 0.25rem;
+  background-image: linear-gradient(-90deg, #56205c 0%, #51265e 16%, #ba5913 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+main section .section-title.light {
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: white;
+}
+main section .section-text {
+  width: 70ch;
+  margin-inline: auto;
+  text-align: center;
+  color: var(--gray-600);
+}
+main section .section-text.light {
+  color: white;
+}
+main section.advantages {
+  height: 265px;
+  background-image: url("/assets/bg_vantagens.png");
+  padding: 0;
+}
+main section.advantages .container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-content: center;
+  margin-inline: auto;
+}
+main section.advantages .advantages-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1.2rem;
+  color: white;
+}
+main section.advantages .advantages-card img {
+  object-fit: contain;
+  height: 64px;
+  width: 64px;
+}
+main section.advantages .advantages-card p {
+  font-weight: lighter;
+  text-align: center;
+}
+main section.advantages .advantages-card p span {
+  font-weight: bold;
+}
+main section.how-it-works {
+  --box-shadow-width: -35vw;
+  position: relative;
+  box-shadow: inset var(--box-shadow-width) 0 0 var(--orange-500);
+}
+main section.how-it-works img.how-it-works-leaf {
+  position: absolute;
+  top: -8rem;
+  left: -3rem;
+}
+main section.how-it-works img.how-it-works-mascot {
+  position: absolute;
+  bottom: -4rem;
+  right: 27vw;
+}
+main section.how-it-works .how-it-works-grid {
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  gap: 4rem;
+}
+main section.how-it-works .phases {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+main section.how-it-works .phases .phase .phase-title {
+  width: fit-content;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.375rem 1rem;
+  border-radius: 200rem;
+  border: 2px solid var(--purple-500);
+  margin-bottom: 0.375rem;
+}
+main section.how-it-works .phases .phase .phase-content {
+  margin-left: 0.5rem;
+  color: var(--gray-600);
+  line-height: 2;
+}
+main section.about-us {
+  background-color: var(--gray-400);
+  position: relative;
+}
+main section.about-us .section-text {
+  margin-bottom: 3.5rem;
+}
+main section.about-us .about-us-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 4rem;
+  max-width: 900px;
+  margin-inline: auto;
+}
+main section.about-us .about-us-image img {
+  width: fit-content;
+}
+main section.about-us .about-us-image img.about-us-leaf {
+  position: absolute;
+  top: -4rem;
+  right: 0;
+}
+main section.about-us .about-us-image img.about-us-tablet {
+  align-self: flex-start;
+  margin-left: 4.5rem;
+}
+main section.about-us .about-us-image .button {
+  --gradient-angle: 109deg;
+  max-width: 11rem;
+  position: absolute;
+  bottom: 3.5rem;
+  padding-block: 0.75rem;
+  font-size: 0.8rem;
+}
+main section.about-us img.about-us-man-image {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(40%) translateY(38%);
+}
+main section.instagram {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 4rem;
+  background-image: url("/assets/bg_instagram.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+main section.instagram img {
+  margin-bottom: 0.5rem;
+}
+main section.instagram .followers {
+  font-size: 3rem;
+  width: fit-content;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 0.5rem;
+}
+main section.instagram .followers.followers-1 {
+  color: white;
+}
+main section.instagram .followers.followers-2 {
+  color: rgba(255, 255, 255, 0.55);
+}
+main section.instagram .followers.followers-3 {
+  color: rgba(255, 255, 255, 0.1);
+}
+main section.instagram .instagram-button {
+  max-width: 10%;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.375rem 3.5rem;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  background-color: transparent;
+  background-image: none;
+  border: 2px solid white;
+  border-radius: 1000rem;
+}
+main section.instagram .instagram-button i {
+  font-size: 1.5rem;
+}
+main section.testimonies {
+  padding-block: 7rem;
+}
+main section.testimonies .testimonies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 12rem);
+  gap: 3rem;
+  place-content: center;
+  margin-top: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+main section.testimonies .testimonies-grid .testimony {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+main section.testimonies .testimonies-grid .testimony img {
+  width: fit-content;
+  margin-bottom: 0.75rem;
+}
+main section.testimonies .testimonies-grid .testimony .username {
+  font-weight: 600;
+}
+main section.testimonies .testimonies-grid .testimony .testimony-content {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--gray-600);
+}
+main section.testimonies .button {
+  max-width: 7%;
+  padding: 0.75rem 3.5rem;
+}
+main section.satisfaction {
+  --p-height: 6rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 18rem);
+  background-color: var(--gray-400);
+  gap: 5rem;
+  place-content: center;
+  padding-block: var(--p-height);
+}
+main section.satisfaction .satisfaction-leaf {
+  position: absolute;
+  top: calc(-5rem - var(--p-height));
+  left: -5rem;
+}
+main section.satisfaction .satisfaction-sneakers {
+  position: absolute;
+  top: calc(-4rem - var(--p-height));
+  right: 0;
+}
+main section.satisfaction .satisfaction-left-panel {
+  position: relative;
+}
+main section.satisfaction .satisfaction-left-panel > * {
+  text-align: left;
+  margin-inline: 0;
+}
+main section.satisfaction .satisfaction-left-panel .section-title {
+  letter-spacing: normal;
+}
+main section.satisfaction .satisfaction-left-panel .section-text {
+  width: auto;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+main section.satisfaction .satisfaction-left-panel .button {
+  max-width: 10rem;
+}
+main section.satisfaction .satisfaction-right-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main section.benefits {
+  padding-block: 7rem;
+  background-image: url("/assets/beneficios_pote_bg.png"), linear-gradient(135deg, #ffc859, #f5802a);
+  background-repeat: no-repeat;
+  background-position-x: 32%;
+  background-size: contain;
+  color: white;
+}
+main section.benefits .content {
+  max-width: 45%;
+  margin-left: auto;
+}
+main section.benefits .section-title {
+  margin-inline: 0;
+}
+main section.benefits .section-text {
+  margin-inline: 0;
+  margin-bottom: 3rem;
+  width: 40ch;
+  text-align: left;
+  line-height: 1.8;
+}
+main section.benefits ul {
+  margin-bottom: 3rem;
+}
+main section.benefits ul li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+main section.benefits ul li i {
+  margin-right: 0.5rem;
+}
+main section.pricings {
+  position: relative;
+}
+main section.pricings .mascot-left, main section.pricings .mascot-right {
+  position: absolute;
+  bottom: 0;
+}
+main section.pricings .mascot-left {
+  left: 0;
+}
+main section.pricings .mascot-right {
+  right: 0;
+}
+main section.pricings .content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+main section.pricings .pricing-card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 0 2px var(--gray-500);
+}
+main section.pricings .pricing-card .pricing-card-title {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background-color: var(--gray-500);
+}
+main section.pricings .pricing-card .pricing-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  align-items: center;
+}
+main section.pricings .pricing-card .pricing-card-content .pricing-card-price {
+  font-size: 0.8rem;
+}
+main section.pricings .pricing-card .pricing-card-content .pricing-card-price .amount {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+main section.pricings .pricing-card .pricing-card-content .pricing-card-price .amount .currency {
+  vertical-align: top;
+  font-size: 1rem;
+  margin-right: 0.25rem;
+}
+main section.pricings .pricing-card .pricing-card-content .pricing-card-price .slash {
+  margin-inline: 0.25rem;
+}
+main section.pricings .pricing-card .pricing-card-content .button {
+  max-width: fit-content;
+  background-image: linear-gradient(-90deg, #8fc75d, #579530);
+}
+main section.pricings .pricing-card .pricing-card-content ul {
+  text-align: center;
+}
+main section.pricings .pricing-card .pricing-card-content ul li {
+  line-height: 3;
+}
+main section.pricings .pricing-card.purple {
+  box-shadow: 0 0 0 2px var(--purple-500);
+}
+main section.pricings .pricing-card.purple .pricing-card-title {
+  background-color: var(--purple-500);
+}
+main section.pricings .pricing-card.orange {
+  box-shadow: 0 0 0 2px var(--orange-500);
+}
+main section.pricings .pricing-card.orange .pricing-card-title {
+  background-color: var(--orange-500);
+}
+main section.faq {
+  position: relative;
+  background-color: var(--gray-400);
+  background-image: url("/assets/bg_faq.png");
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  padding-bottom: 7rem;
+}
+main section.faq .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main section.faq .content img {
+  max-width: fit-content;
+}
+main section.faq .content .faq-accordions {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+main section.faq .content .faq-accordions details {
+  width: 100%;
+  color: var(--gray-600);
+}
+main section.faq .content .faq-accordions details summary {
+  padding: 1rem 2.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid transparent;
+  border-radius: 2000rem;
+}
+main section.faq .content .faq-accordions details summary::marker {
+  content: "";
+}
+main section.faq .content .faq-accordions details summary:hover {
+  cursor: pointer;
+}
+main section.faq .content .faq-accordions details summary span.plus {
+  background-image: linear-gradient(-90deg, #56205c 0%, #51265e 16%, #ba5913 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+main section.faq .content .faq-accordions details summary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  padding: 2px;
+  background: linear-gradient(-90deg, #56205c 0%, #51265e 16%, #ba5913 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+main section.faq .content .faq-accordions details main {
+  padding: 1rem 2.5rem;
+}
+main section.faq .foreground-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  place-content: center;
+  background-image: url("/assets/bg_footer.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 6rem 15rem;
+  color: white;
+}
+footer section {
+  margin-bottom: 2rem;
+}
+footer section.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+footer section.footer-left .footer-logo {
+  width: fit-content;
+}
+footer section.footer-left .footer-about {
+  max-width: 40ch;
+  line-height: 2;
+}
+footer section.footer-left .social-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+footer section.footer-left .social-links .link {
+  width: 2.5rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 100%;
+  color: black;
+  mix-blend-mode: screen;
+  transition: filter 0.2s ease;
+}
+footer section.footer-left .social-links .link:hover, footer section.footer-left .social-links .link:focus {
+  filter: brightness(0.8);
+}
+footer section.footer-left .social-links .link span {
+  display: none;
+}
+footer section.footer-right ul li {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 2;
+  margin-bottom: 2rem;
+}
+footer section.footer-right ul li:last-child {
+  margin-bottom: 1rem;
+}
+footer section.footer-right ul li h3 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+footer hr {
+  grid-column: 1/3;
+  border-style: solid;
+  width: 100%;
+  margin-block: 2rem;
+}
+footer .copyright {
+  grid-column: 1/3;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+@media only screen and (max-width: 768px) {
+  header.hero .hero-navbar {
+    gap: 18.5rem;
+  }
+
+  main section.how-it-works {
+    --box-shadow-width: -30vw;
+  }
+  main section.how-it-works img.how-it-works-mascot {
+    right: 15vw;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  main section.how-it-works img.how-it-works-mascot {
+    right: 23vw;
+  }
+}
