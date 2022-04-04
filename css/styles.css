@@ -289,9 +289,9 @@ header.hero {
   color: white;
 }
 header.hero .hero-navbar {
-  display: grid;
-  grid-template-columns: 4fr 3fr;
-  gap: 10rem;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
   max-height: 100px;
   padding-block: 3rem;
 }
@@ -300,6 +300,9 @@ header.hero .hero-navbar .hero-navbar-left {
 }
 header.hero .hero-navbar nav.hero-navbar-right {
   text-transform: uppercase;
+}
+header.hero .hero-navbar nav.hero-navbar-right.mobile {
+  display: none;
 }
 header.hero .hero-navbar nav.hero-navbar-right ul {
   display: flex;
@@ -342,7 +345,7 @@ main section .section-title.light {
   color: white;
 }
 main section .section-text {
-  width: 70ch;
+  max-width: 70ch;
   margin-inline: auto;
   text-align: center;
   color: var(--gray-600);
@@ -844,11 +847,47 @@ footer .copyright {
   font-weight: 300;
 }
 
-@media only screen and (max-width: 768px) {
-  header.hero .hero-navbar {
-    gap: 18.5rem;
+@media only screen and (max-width: 425px) {
+  header.hero {
+    padding-inline: 2rem;
   }
-
+  header.hero .hero-navbar .button {
+    border-radius: 1rem;
+    max-width: 1.5rem;
+  }
+  header.hero .hero-navbar nav.hero-navbar-right {
+    position: relative;
+  }
+  header.hero .hero-navbar nav.hero-navbar-right.desktop {
+    display: none;
+  }
+  header.hero .hero-navbar nav.hero-navbar-right.mobile {
+    display: flex;
+  }
+  header.hero .hero-navbar nav.hero-navbar-right ul {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: -3.5rem;
+    right: 0;
+    gap: 0.5rem;
+  }
+  header.hero .hero-navbar nav.hero-navbar-right ul li {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem 2rem;
+    width: 200px;
+    border: 2px solid white;
+    border-radius: 1rem;
+  }
+  header.hero .hero-navbar nav.hero-navbar-right ul.hidden {
+    display: none;
+  }
+}
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+  header.hero {
+    padding-inline: 2rem;
+  }
   main section.how-it-works {
     --box-shadow-width: -30vw;
   }
