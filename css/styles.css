@@ -450,10 +450,12 @@ main section.about-us .about-us-image img.about-us-leaf {
   position: absolute;
   top: -4rem;
   right: 0;
+  pointer-events: none;
 }
 main section.about-us .about-us-image img.about-us-tablet {
   align-self: flex-start;
   margin-left: 4.5rem;
+  pointer-events: none;
 }
 main section.about-us .about-us-image .button {
   --gradient-angle: 109deg;
@@ -467,6 +469,7 @@ main section.about-us img.about-us-man-image {
   position: absolute;
   bottom: 0;
   transform: translateX(40%) translateY(38%);
+  pointer-events: none;
 }
 main section.instagram {
   display: flex;
@@ -612,7 +615,7 @@ main section.benefits .section-title {
 main section.benefits .section-text {
   margin-inline: 0;
   margin-bottom: 3rem;
-  width: 40ch;
+  max-width: 40ch;
   text-align: left;
   line-height: 1.8;
 }
@@ -836,8 +839,10 @@ footer section.footer-right ul li h3 {
 }
 footer hr {
   grid-column: 1/3;
-  border-style: solid;
+  border: none;
   width: 100%;
+  height: 2px;
+  background-color: white;
   margin-block: 2rem;
 }
 footer .copyright {
@@ -882,6 +887,99 @@ footer .copyright {
   }
   header.hero .hero-navbar nav.hero-navbar-right ul.hidden {
     display: none;
+  }
+
+  main section.how-it-works {
+    box-shadow: none;
+  }
+  main section.how-it-works img.how-it-works-leaf {
+    height: 20%;
+    top: -6rem;
+  }
+  main section.how-it-works .how-it-works-grid {
+    grid-template-columns: 1fr;
+  }
+  main section.how-it-works img.how-it-works-mascot {
+    position: relative;
+    margin-top: 2rem;
+    inset: 0;
+  }
+  main section.testimonies .testimonies-grid {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, 1fr);
+  }
+  main section.satisfaction {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  main section.satisfaction .satisfaction-leaf {
+    --leaf-scale: 0.6;
+    transform: scale(var(--leaf-scale));
+  }
+  main section.satisfaction .satisfaction-sneakers {
+    --sneakers-scale: 0.6;
+    transform: scale(var(--sneakers-scale));
+    right: -62px;
+  }
+  main section.about-us .about-us-image img.about-us-leaf {
+    --leaf-scale: 0.6;
+    transform: scale(var(--leaf-scale), var(--leaf-scale));
+    top: -5rem;
+    right: -4rem;
+  }
+  main section.about-us .about-us-image img.about-us-tablet {
+    --tablet-scale: 0.6;
+    transform: scale(var(--tablet-scale), var(--tablet-scale));
+    margin-left: 0;
+    align-self: flex-end;
+  }
+  main section.about-us .about-us-image img.about-us-man-image {
+    --man-scale: 0.6;
+    transform: scale(var(--man-scale), var(--man-scale));
+    top: 0;
+    right: -7rem;
+  }
+  main section.benefits {
+    position: relative;
+    background-position-y: bottom;
+    background-size: cover;
+  }
+  main section.benefits::before {
+    background-color: rgba(0, 0, 0, 0.3);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    inset: 0;
+  }
+  main section.benefits .content {
+    position: relative;
+    max-width: 100%;
+  }
+  main section.benefits .content .button {
+    margin-inline: auto;
+  }
+  main section.pricings .content {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, 1fr);
+  }
+  main section.faq .section-title {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  main section.faq .content .faq-accordions {
+    width: 100%;
+  }
+  main section.faq .foreground-image {
+    display: none;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 6rem 4rem;
   }
 }
 @media only screen and (min-width: 426px) and (max-width: 768px) {
