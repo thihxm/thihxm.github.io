@@ -853,6 +853,10 @@ footer .copyright {
 }
 
 @media only screen and (max-width: 320px) {
+  section.how-it-works img.how-it-works-leaf {
+    width: 30% !important;
+  }
+
   section.about-us .about-us-image .button {
     bottom: 0;
   }
@@ -903,7 +907,7 @@ footer .copyright {
     box-shadow: none;
   }
   main section.how-it-works img.how-it-works-leaf {
-    height: 20%;
+    width: 20%;
     top: -6rem;
   }
   main section.how-it-works .how-it-works-grid {
