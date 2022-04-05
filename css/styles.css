@@ -984,6 +984,10 @@ footer .copyright {
     grid-template-columns: auto;
     grid-template-rows: repeat(3, 1fr);
   }
+  main section.pricings .mascot-left,
+main section.pricings .mascot-right {
+    width: 30%;
+  }
   main section.faq .section-title {
     margin-top: 1rem;
     text-align: center;
