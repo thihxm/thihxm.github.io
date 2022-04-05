@@ -852,6 +852,16 @@ footer .copyright {
   font-weight: 300;
 }
 
+@media only screen and (max-width: 320px) {
+  section.about-us .about-us-image .button {
+    bottom: 0;
+  }
+  section.about-us .about-us-image img.about-us-man-image {
+    right: 2rem !important;
+    bottom: 2rem !important;
+    top: auto !important;
+  }
+}
 @media only screen and (max-width: 425px) {
   header.hero {
     padding-inline: 2rem;
@@ -900,6 +910,7 @@ footer .copyright {
     grid-template-columns: 1fr;
   }
   main section.how-it-works img.how-it-works-mascot {
+    width: 100%;
     position: relative;
     margin-top: 2rem;
     inset: 0;
@@ -921,23 +932,28 @@ footer .copyright {
     transform: scale(var(--sneakers-scale));
     right: -62px;
   }
+  main section.about-us .section-title {
+    text-align: center;
+  }
+  main section.about-us .about-us-image .button {
+    bottom: 0;
+  }
   main section.about-us .about-us-image img.about-us-leaf {
-    --leaf-scale: 0.6;
-    transform: scale(var(--leaf-scale), var(--leaf-scale));
+    width: 40%;
     top: -5rem;
     right: -4rem;
   }
   main section.about-us .about-us-image img.about-us-tablet {
-    --tablet-scale: 0.6;
-    transform: scale(var(--tablet-scale), var(--tablet-scale));
+    width: 100%;
     margin-left: 0;
+    margin-right: 5rem;
     align-self: flex-end;
   }
   main section.about-us .about-us-image img.about-us-man-image {
-    --man-scale: 0.6;
-    transform: scale(var(--man-scale), var(--man-scale));
-    top: 0;
-    right: -7rem;
+    width: 90%;
+    top: auto;
+    right: 4rem;
+    bottom: 3rem;
   }
   main section.benefits {
     position: relative;
