@@ -855,7 +855,7 @@ footer .copyright {
   font-weight: 300;
 }
 
-html:has(.popup-container[data-open]) {
+html.hide-scroll {
   overflow: hidden;
 }
 

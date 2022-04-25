@@ -23,6 +23,8 @@ const popupAttrObserver = new MutationObserver((mutations, observer) => {
     if (mutation.attributeName === 'data-open') {
       const popup = mutation.target
 
+      document.querySelector('html').classList.add('hide-scroll')
+
       const isOpen = popup.hasAttribute('data-open')
       if (!isOpen) return
 
@@ -47,34 +49,33 @@ const popupDeleteObserver = new MutationObserver((mutations, observer) => {
       if (isPopup) {
         removedNode.removeEventListener('click', lightDismiss)
         removedNode.removeEventListener('close', popupClose)
-        removedNode.addEventListener('closed', dialogClosed)
+        removedNode.addEventListener('closed', popupClosed)
         removedNode.dispatchEvent(popupRemovedEvent)
       }
     })
   })
 })
 
-// wait for all dialog animations to complete their promises
+// wait for all popup animations to complete their promises
 const animationsComplete = (element) =>
   Promise.allSettled(
     element.getAnimations().map((animation) => animation.finished)
   )
 
-// click outside the dialog handler
+// click outside the popup handler
 const lightDismiss = ({ target: popup }) => {
   const isPopup = popup.classList.contains('popup-container')
   if (isPopup) {
-    popupClose(popup)
+    popup.close()
   }
 }
 
 const closePopup = ({ target: button }) => {
   const popup = button.closest('.popup-container')
-  popupClose(popup)
+  popup.close()
 }
 
-const popupClose = async (popup) => {
-  popup.removeAttribute('data-open')
+const popupClose = async ({ target: popup }) => {
   popup.setAttribute('data-inert', '')
   popup.dispatchEvent(popupClosingEvent)
 
@@ -84,14 +85,29 @@ const popupClose = async (popup) => {
 }
 
 const popupClosed = async ({ target: popup }) => {
-  console.log(popup)
   popup.removeAttribute('data-inert')
   popup.setAttribute('data-closed', '')
+  document.querySelector('html').classList.remove('hide-scroll')
 }
 
 const setupPopup = async (popup) => {
+  popup.open = () => {
+    popup.removeAttribute('data-closed')
+    popup.setAttribute('data-open', '')
+  }
+
+  popup.close = async () => {
+    popup.removeAttribute('data-open')
+    popup.setAttribute('data-inert', '')
+    popup.dispatchEvent(popupClosingEvent)
+
+    await animationsComplete(popup)
+
+    popup.dispatchEvent(popupClosedEvent)
+  }
+
   popup.addEventListener('click', lightDismiss)
-  popup.addEventListener('close', popupClose)
+  popup.addEventListener('close', popup.close)
   popup.addEventListener('closed', popupClosed)
 
   popupAttrObserver.observe(popup, {
@@ -108,7 +124,17 @@ const setupPopup = async (popup) => {
 }
 
 document.querySelectorAll('.popup-container').forEach((popup) => {
-  console.log(popup)
   setupPopup(popup)
   popup.querySelector('.popup-close').addEventListener('click', closePopup)
+})
+
+window.addEventListener('visibilitychange', (e) => {
+  e.preventDefault()
+  if (document.hidden) {
+    const newsletterPopup = document.querySelector('#popup-newsletter')
+    newsletterPopup.open()
+
+    // newsletterPopup.removeAttribute('data-closed')
+    // newsletterPopup.setAttribute('data-open', '')
+  }
 })
