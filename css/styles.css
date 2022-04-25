@@ -883,7 +883,6 @@ html.hide-scroll {
 .popup-container .popup {
   --popup-padding: 2rem;
   position: relative;
-  width: 100%;
   max-width: 50vw;
   margin-inline: auto;
   min-height: 50%;
@@ -897,6 +896,12 @@ html.hide-scroll {
   background-position: center;
   background-size: cover;
   color: white;
+}
+.popup-container .popup .popup-mascot {
+  position: absolute;
+  top: 0;
+  left: -5rem;
+  height: 98%;
 }
 .popup-container .popup .popup-content {
   display: flex;
