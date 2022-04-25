@@ -138,6 +138,7 @@ a {
 html,
 body {
   font-family: Helvetica, sans-serif;
+  position: relative;
 }
 
 :root {
@@ -259,12 +260,14 @@ POPUP NEWSLETTER:
   min-width: 5.5rem;
   padding: 1rem;
   margin-inline: auto;
+  border: none;
   border-radius: 100rem;
   background-image: linear-gradient(var(--gradient-angle), #8fc75d, #579530);
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   color: white;
+  cursor: pointer;
   transition: filter 0.2s ease;
 }
 .button.light {
@@ -852,6 +855,123 @@ footer .copyright {
   font-weight: 300;
 }
 
+html:has(.popup-container[data-open]) {
+  overflow: hidden;
+}
+
+.popup-container {
+  --ease: cubic-bezier(.25, 0, .3, 1);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  transition: opacity 0.5s var(--ease);
+  animation: slide-out-down 0.5s var(--ease) forwards;
+}
+.popup-container[data-closed] {
+  display: none;
+}
+.popup-container[data-open] {
+  animation: slide-in-up 0.5s var(--ease) forwards;
+}
+.popup-container:not([data-open]) {
+  pointer-events: none;
+  opacity: 0;
+}
+.popup-container .popup {
+  --popup-padding: 2rem;
+  position: relative;
+  width: 100%;
+  max-width: 50vw;
+  margin-inline: auto;
+  min-height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--popup-padding);
+  border-radius: 4rem;
+  background-image: url("/assets/bg_popup_saida.png");
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
+.popup-container .popup .popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-block: 3rem;
+  max-width: 50%;
+  font-weight: 300;
+}
+.popup-container .popup .popup-content .popup-title {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.popup-container .popup .popup-content p {
+  width: 100%;
+  line-height: 2;
+  text-align: center;
+  padding-inline: 1rem;
+}
+.popup-container .popup .popup-content .popup-text-input {
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-block: 1rem;
+  border: 2px white solid;
+  border-radius: 10000rem;
+  background-color: transparent;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.popup-container .popup .popup-content .popup-text-input::placeholder {
+  font-weight: 300;
+  color: white;
+}
+.popup-container .popup .popup-content .button {
+  border: none;
+  background-image: none;
+  background-color: var(--green-600);
+  font-weight: normal;
+  max-width: fit-content;
+  padding-inline: 4rem;
+}
+.popup-container .popup .popup-close {
+  --offset: -1rem;
+  position: absolute;
+  top: var(--offset);
+  right: var(--offset);
+  width: 4rem;
+  aspect-ratio: 1/1;
+  background-color: black;
+  border: none;
+  border-radius: 100%;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+.popup-container .popup .popup-close:hover, .popup-container .popup .popup-close:focus, .popup-container .popup .popup-close:focus-within {
+  filter: contrast(0.7);
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes slide-out-down {
+  to {
+    transform: translateY(100%);
+  }
+}
 @media only screen and (max-width: 320px) {
   section.how-it-works img.how-it-works-leaf {
     width: 30% !important;

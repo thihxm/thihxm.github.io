@@ -8,3 +8,107 @@ const toggleNavMenu = () => {
     siteLinks.classList.add('hidden')
   }
 }
+
+// custom events to be added to <popup>
+const popupCloseEvent = new Event('close')
+const popupClosingEvent = new Event('closing')
+const popupClosedEvent = new Event('closed')
+const popupOpeningEvent = new Event('opening')
+const popupOpenedEvent = new Event('opened')
+const popupRemovedEvent = new Event('removed')
+
+// track opening
+const popupAttrObserver = new MutationObserver((mutations, observer) => {
+  mutations.forEach(async (mutation) => {
+    if (mutation.attributeName === 'data-open') {
+      const popup = mutation.target
+
+      const isOpen = popup.hasAttribute('data-open')
+      if (!isOpen) return
+
+      popup.removeAttribute('data-inert')
+
+      // set focus
+      const focusTarget = popup.querySelector('[autofocus]')
+      focusTarget ? focusTarget.focus() : popup.querySelector('button').focus()
+
+      popup.dispatchEvent(popupOpeningEvent)
+      await animationsComplete(popup)
+      popup.dispatchEvent(popupOpenedEvent)
+    }
+  })
+})
+
+// track deletion
+const popupDeleteObserver = new MutationObserver((mutations, observer) => {
+  mutations.forEach((mutation) => {
+    mutation.removedNodes.forEach((removedNode) => {
+      const isPopup = removedNode.classList.contains('popup-container')
+      if (isPopup) {
+        removedNode.removeEventListener('click', lightDismiss)
+        removedNode.removeEventListener('close', popupClose)
+        removedNode.addEventListener('closed', dialogClosed)
+        removedNode.dispatchEvent(popupRemovedEvent)
+      }
+    })
+  })
+})
+
+// wait for all dialog animations to complete their promises
+const animationsComplete = (element) =>
+  Promise.allSettled(
+    element.getAnimations().map((animation) => animation.finished)
+  )
+
+// click outside the dialog handler
+const lightDismiss = ({ target: popup }) => {
+  const isPopup = popup.classList.contains('popup-container')
+  if (isPopup) {
+    popupClose(popup)
+  }
+}
+
+const closePopup = ({ target: button }) => {
+  const popup = button.closest('.popup-container')
+  popupClose(popup)
+}
+
+const popupClose = async (popup) => {
+  popup.removeAttribute('data-open')
+  popup.setAttribute('data-inert', '')
+  popup.dispatchEvent(popupClosingEvent)
+
+  await animationsComplete(popup)
+
+  popup.dispatchEvent(popupClosedEvent)
+}
+
+const popupClosed = async ({ target: popup }) => {
+  console.log(popup)
+  popup.removeAttribute('data-inert')
+  popup.setAttribute('data-closed', '')
+}
+
+const setupPopup = async (popup) => {
+  popup.addEventListener('click', lightDismiss)
+  popup.addEventListener('close', popupClose)
+  popup.addEventListener('closed', popupClosed)
+
+  popupAttrObserver.observe(popup, {
+    attributes: true,
+  })
+  popupDeleteObserver.observe(document.body, {
+    attributes: false,
+    subtree: false,
+    childList: true,
+  })
+
+  await animationsComplete(popup)
+  popup.removeAttribute('loading')
+}
+
+document.querySelectorAll('.popup-container').forEach((popup) => {
+  console.log(popup)
+  setupPopup(popup)
+  popup.querySelector('.popup-close').addEventListener('click', closePopup)
+})
