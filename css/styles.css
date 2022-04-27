@@ -984,19 +984,29 @@ html.hide-scroll {
   overflow: hidden;
 }
 
+@keyframes example {
+  to {
+    background-color: none;
+    backdrop-filter: none;
+  }
+}
 .popup-container {
   --ease: cubic-bezier(.25, 0, .3, 1);
+  --squish: cubic-bezier(.5, -.5, .1, 1.5);
   position: fixed;
   height: 100vh;
   width: 100vw;
   inset: 0;
   display: grid;
   place-content: center;
-  transition: opacity 0.5s var(--ease);
-  animation: slide-out-down 0.5s var(--ease) forwards;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(25px);
+  transition: opacity 0.5s var(--ease), backdrop-filter 0.5s ease, background-color 0.5s ease;
 }
 .popup-container[data-closed] {
   display: none;
+  background-color: none;
+  backdrop-filter: none;
 }
 .popup-container[data-open] {
   animation: slide-in-up 0.5s var(--ease) forwards;
@@ -1100,6 +1110,11 @@ html.hide-scroll {
 @keyframes slide-out-down {
   to {
     transform: translateY(100%);
+  }
+}
+@keyframes scale-down {
+  to {
+    transform: scale(0.75);
   }
 }
 @media only screen and (max-width: 320px) {
