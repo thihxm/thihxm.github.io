@@ -128,10 +128,10 @@ document.querySelectorAll('.popup-container').forEach((popup) => {
   popup.querySelector('.popup-close').addEventListener('click', closePopup)
 })
 
-// window.addEventListener('visibilitychange', (e) => {
-//   e.preventDefault()
-//   if (document.hidden) {
-//     const newsletterPopup = document.querySelector('#popup-newsletter')
-//     newsletterPopup.open()
-//   }
-// })
+window.addEventListener('visibilitychange', (e) => {
+  e.preventDefault()
+  if (document.hidden) {
+    const newsletterPopup = document.querySelector('#popup-newsletter')
+    newsletterPopup.open()
+  }
+})
