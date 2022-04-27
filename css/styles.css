@@ -286,14 +286,31 @@ POPUP NEWSLETTER:
 }
 
 header.hero {
+  --padding-inline: 4rem;
   position: relative;
-  min-height: 80vh;
-  padding-inline: 4rem;
-  background-image: url("/assets/header/casal_fundo.png"), linear-gradient(49deg, var(--orange-500), var(--orange-400));
+  min-height: 70vh;
+  background-image: linear-gradient(49deg, var(--orange-500), var(--orange-400));
   background-repeat: no-repeat;
-  background-position: right, center;
+  background-position: center;
   background-size: contain;
   color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+header.hero .header-left-panel {
+  display: flex;
+  margin-left: 2rem;
+}
+header.hero .header-left-panel img {
+  align-self: end;
+  width: 90%;
+  object-fit: contain;
+}
+header.hero .header-right-panel {
+  display: flex;
+}
+header.hero .header-right-panel img {
+  width: 100%;
 }
 header.hero .header-left-content {
   width: 40vw;
@@ -305,18 +322,23 @@ header.hero .hero-navbar {
   display: flex;
   justify-content: space-between;
   flex: 1;
-  flex-wrap: wrap;
   gap: 1rem;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
   max-height: 100px;
   padding-block: 3rem;
 }
 header.hero .hero-navbar .hero-navbar-left {
+  margin-left: var(--padding-inline);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 header.hero .hero-navbar nav.hero-navbar-right {
+  margin-right: var(--padding-inline);
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -1081,6 +1103,17 @@ html.hide-scroll {
   }
 }
 @media only screen and (max-width: 320px) {
+  header.hero {
+    min-height: 65vh;
+  }
+  header.hero .hero-navbar .hero-navbar-left img {
+    width: 100% !important;
+  }
+
+  main section {
+    padding-inline: 1.5rem;
+  }
+
   section.how-it-works img.how-it-works-leaf {
     width: 30% !important;
   }
@@ -1088,8 +1121,12 @@ html.hide-scroll {
   section.about-us .about-us-image .button {
     bottom: 0;
   }
+  section.about-us .about-us-image img.about-us-leaf {
+    right: -1rem !important;
+  }
   section.about-us .about-us-image img.about-us-man-image {
-    right: 2rem !important;
+    width: 70% !important;
+    right: 4rem !important;
     bottom: 2rem !important;
     top: auto !important;
   }
@@ -1101,17 +1138,28 @@ html.hide-scroll {
   section.pricings .mascot-image {
     display: none;
   }
+
+  footer {
+    padding-inline: 1.5rem !important;
+  }
 }
 @media only screen and (max-width: 425px) {
   header.hero {
-    padding-inline: 2rem;
+    grid-template-columns: 1fr;
+  }
+  header.hero .header-right-panel {
+    display: none;
   }
   header.hero .hero-navbar .button {
     border-radius: 1rem;
     max-width: 1.5rem;
   }
+  header.hero .hero-navbar .hero-navbar-left img {
+    width: 90%;
+  }
   header.hero .hero-navbar nav.hero-navbar-right {
     position: relative;
+    font-size: 0.9rem;
   }
   header.hero .hero-navbar nav.hero-navbar-right.desktop {
     display: none;
@@ -1180,9 +1228,9 @@ html.hide-scroll {
     bottom: 0;
   }
   main section.about-us .about-us-image img.about-us-leaf {
-    width: 40%;
+    width: 30%;
     top: -5rem;
-    right: -4rem;
+    right: -2rem;
   }
   main section.about-us .about-us-image img.about-us-tablet {
     width: 100%;
@@ -1193,7 +1241,7 @@ html.hide-scroll {
   main section.about-us .about-us-image img.about-us-man-image {
     width: 90%;
     top: auto;
-    right: 4rem;
+    right: 3rem;
     bottom: 3rem;
   }
   main section.benefits {
@@ -1247,9 +1295,6 @@ main section.pricings .mascot-right {
   }
 }
 @media only screen and (min-width: 426px) and (max-width: 768px) {
-  header.hero {
-    padding-inline: 2rem;
-  }
   main section.satisfaction {
     grid-template-columns: auto;
     grid-template-rows: 1fr;
@@ -1260,9 +1305,29 @@ main section.pricings .mascot-right {
   main section.how-it-works img.how-it-works-mascot {
     right: 15vw;
   }
+  main section.pricings .content {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, 1fr);
+  }
+  main section.faq .content .faq-accordions {
+    width: 100%;
+  }
+  main section.faq .foreground-image {
+    display: none;
+  }
+
+  footer {
+    padding-inline: 5rem;
+    column-gap: 2rem;
+  }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   main section.how-it-works img.how-it-works-mascot {
     right: 23vw;
+  }
+
+  footer {
+    padding-inline: 6rem;
+    column-gap: 4rem;
   }
 }
