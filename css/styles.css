@@ -695,15 +695,26 @@ main section.satisfaction .satisfaction-right-panel {
   justify-content: center;
 }
 main section.benefits {
-  padding-block: 7rem;
-  background-image: url("/assets/beneficios_pote_bg.png"), linear-gradient(135deg, #ffc859, #f5802a);
-  background-repeat: no-repeat;
-  background-position-x: 32%;
-  background-size: contain;
+  --bg-pos-x: 32%;
+  background-image: linear-gradient(135deg, #ffc859, #f5802a);
   color: white;
+  padding-block: 0;
 }
-main section.benefits .content {
-  max-width: 45%;
+main section.benefits .container {
+  padding-block: 7rem;
+  background-image: url("/assets/folhas_beneficios.png");
+  background-position-x: var(--bg-pos-x);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+main section.benefits .container .mockup-img {
+  position: absolute;
+  left: calc(var(--bg-pos-x) * 0.6);
+  height: 60%;
+}
+main section.benefits .container .content {
+  position: relative;
+  max-width: 50%;
   margin-left: auto;
 }
 main section.benefits .section-title {
@@ -1264,20 +1275,18 @@ html.hide-scroll {
     background-position-y: bottom;
     background-size: cover;
   }
-  main section.benefits::before {
-    background-color: rgba(0, 0, 0, 0.3);
-    content: "";
-    display: block;
-    height: 100%;
-    position: absolute;
-    width: 100%;
-    inset: 0;
+  main section.benefits .container {
+    background-size: cover;
+    background: none;
   }
-  main section.benefits .content {
+  main section.benefits .container .mockup-img {
+    display: none;
+  }
+  main section.benefits .container .content {
     position: relative;
     max-width: 100%;
   }
-  main section.benefits .content .button {
+  main section.benefits .container .content .button {
     margin-inline: auto;
   }
   main section.pricings .content {
@@ -1314,6 +1323,9 @@ main section.pricings .mascot-right {
     grid-template-columns: auto;
     grid-template-rows: 1fr;
   }
+  main section.benefits .container .mockup-img {
+    left: 0;
+  }
   main section.how-it-works {
     --box-shadow-width: -30vw;
   }
@@ -1339,6 +1351,9 @@ main section.pricings .mascot-right {
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   main section.how-it-works img.how-it-works-mascot {
     right: 23vw;
+  }
+  main section.benefits .container .mockup-img {
+    left: calc(var(--bg-pos-x) * 0.4);
   }
 
   footer {
