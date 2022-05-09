@@ -137,8 +137,10 @@ a {
 /* Site CSS */
 html,
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: "Pangram", sans-serif;
+  font-weight: 500;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -155,103 +157,6 @@ body {
   --green-600: #51991a;
 }
 
-/* FONTS 
-  Button:
-    - label: opensans semibold 12pt
-    Gradient:
-      angle: 90deg
-      from: #8bc34a
-      to: #4d9617
-  Header:
-    - links: opensans semibold 13pt
-  Section:
-    - title: pangram black 24pt
-      Gradient:
-        from: #56205c
-        step[26%]: #51265e
-        to: #ba5913
-  Pricing:
-    - title: pangram black 20pt
-    - content: opensans regular 12pt
-    - price: opensans bold 35.75pt 16.94pt
-    - qtd: myriad pro regular 12.23pt
-    Button:
-      - label: opensans semibold 12pt
-      Gradient:
-        angle: -176deg
-        from: #8bc34a
-        to: #4d9617
-    Kit 1:
-      fill: #b9b8af
-    Kit 2:
-      fill: #702380
-    Kit 3:
-      fill: #ff860c
-  Benefits:
-    - title: pangram black 24pt
-    - content: pangram regular 13pt
-    - list: pangram bold 13pt
-    - check: fontawesome 8pt
-    - button: opensans semibold 12pt
-    Gradient:
-      angle: -45deg
-      from: #ffc859
-      to: #f5802a
-  Satisfaction:
-    fill = #ececeb
-    - content: pangram regular 13pt
-    - title: pangram black 20pt
-    Button:
-      - label: opensans semibold 12pt
-      Gradient:
-        angle: -23deg
-        from: #8bc34a
-        to: #4d9617
-  Instagram:
-    - button: opensans bold 12pt
-    - content: pangram black 47pt
-  Quem Somos:
-    - content: pangram regular 13pt
-    - button: opensans bold 12pt
-      Gradient:
-        angle: -19deg
-        from: #8bc34a
-        to: #4d9617
-  Footer:
-    - copy: opensans regular 11pt
-    - left:
-      - content: opensans regular 13pt
-      - social text: pangram bold 14pt
-    - right:
-      - title: pangram bold 14pt
-      - content: opensans light 13pt
-  Como Funciona:
-    - content: pangram regular 13pt
-    - topic title: pangram bold 14pt
-  Vantagens:
-    h = 265px
-    gap = 65px
-    - content: pangram light 14.68pt
-      - highlight: pangram bold 14.68pt
-  FAQ:
-    fill = #f8f8f8
-    - accordion title: pangram regular 13pt
-
-
-
-POPUP NEWSLETTER:
-  border radius = 500px
-  Button:
-    fill = #4d9617
-    - label: opensans semibold 112.72pt
-  - title: pangram black 348.36pt
-  - content: pangram regular 122.12pt
-  - input: pangram regular 122.12pt
-  Close:
-    fill = black
-    - x: pangram black 177.41pt
-
-*/
 .button {
   --gradient-angle: 0deg;
   display: flex;
@@ -300,17 +205,24 @@ header.hero {
 header.hero .header-left-panel {
   display: flex;
   margin-left: 2rem;
+  padding-top: 10rem;
 }
-header.hero .header-left-panel img {
+header.hero .header-left-panel a {
   align-self: end;
   width: 90%;
+}
+header.hero .header-left-panel a img {
+  align-self: end;
+  width: 100%;
   object-fit: contain;
+  transform: translateY(3px);
 }
 header.hero .header-right-panel {
   display: flex;
 }
 header.hero .header-right-panel img {
   width: 100%;
+  object-fit: cover;
 }
 header.hero .header-left-content {
   width: 40vw;
@@ -384,8 +296,8 @@ main section .section-title {
   text-transform: uppercase;
   overflow-wrap: break-word;
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: bolder;
+  font-size: 2rem;
+  font-weight: 900;
   letter-spacing: 0.25rem;
   line-height: normal;
   background-image: linear-gradient(-90deg, #56205c 0%, #51265e 16%, #ba5913 100%);
@@ -717,6 +629,11 @@ main section.benefits .container .content {
   max-width: 50%;
   margin-left: auto;
 }
+main section.benefits .container .content .button {
+  max-width: fit-content;
+  padding-inline: 2rem;
+  margin-left: 0;
+}
 main section.benefits .section-title {
   margin-inline: 0;
 }
@@ -753,6 +670,7 @@ main section.pricings {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  padding-bottom: 4.5rem;
 }
 main section.pricings .section-title {
   margin-bottom: 1rem;
@@ -773,6 +691,7 @@ main section.pricings .content {
   gap: 1rem;
 }
 main section.pricings .pricing-card {
+  --text-dark-color: hsl(0, 0%, 20%);
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 0 2px var(--gray-500);
@@ -786,12 +705,18 @@ main section.pricings .pricing-card .pricing-card-title {
   color: white;
   background-color: var(--gray-500);
 }
+main section.pricings .pricing-card .pricing-card-title .subtitle {
+  display: block;
+  font-weight: 300;
+  font-size: 1rem;
+}
 main section.pricings .pricing-card .pricing-card-content {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding: 2rem 1rem;
   align-items: center;
+  position: relative;
 }
 main section.pricings .pricing-card .pricing-card-content .pricing-card-message {
   color: var(--purple-500);
@@ -800,6 +725,17 @@ main section.pricings .pricing-card .pricing-card-content .pricing-card-message 
 }
 main section.pricings .pricing-card .pricing-card-content .pricing-card-price {
   font-size: 0.8rem;
+  position: relative;
+  color: var(--text-dark-color);
+}
+main section.pricings .pricing-card .pricing-card-content .pricing-card-price::before {
+  content: attr(title);
+  position: absolute;
+  top: 0;
+  transform: translateY(-100%);
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
 }
 main section.pricings .pricing-card .pricing-card-content .pricing-card-price .amount {
   font-weight: bold;
@@ -815,7 +751,22 @@ main section.pricings .pricing-card .pricing-card-content .pricing-card-price .s
 }
 main section.pricings .pricing-card .pricing-card-content .button {
   max-width: fit-content;
+  padding-inline: 2rem;
   background-image: linear-gradient(-90deg, #8fc75d, #579530);
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
+}
+main section.pricings .pricing-card .pricing-card-content .button::before {
+  content: attr(title);
+  position: absolute;
+  bottom: -4px;
+  transform: translateY(100%);
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  text-transform: none;
+  color: var(--text-dark-color);
 }
 main section.pricings .pricing-card .pricing-card-content .pricing-mockup {
   height: 100%;
@@ -1062,6 +1013,7 @@ html.hide-scroll {
   font-size: 3.5rem;
   text-transform: uppercase;
   font-weight: bold;
+  text-align: center;
 }
 .popup-container .popup .popup-content p {
   width: 100%;
@@ -1292,6 +1244,7 @@ html.hide-scroll {
   main section.pricings .content {
     grid-template-columns: auto;
     grid-template-rows: repeat(3, 1fr);
+    gap: 5rem;
   }
   main section.pricings .mascot-image {
     display: none;
@@ -1308,6 +1261,17 @@ main section.pricings .mascot-right {
     width: 100%;
   }
   main section.faq .foreground-image {
+    display: none;
+  }
+
+  .popup-container .popup .popup-content {
+    max-width: 70%;
+    gap: 1rem;
+  }
+  .popup-container .popup .popup-content .popup-title {
+    font-size: 2.4rem;
+  }
+  .popup-container .popup .popup-mascot {
     display: none;
   }
 
@@ -1335,12 +1299,23 @@ main section.pricings .mascot-right {
   main section.pricings .content {
     grid-template-columns: auto;
     grid-template-rows: repeat(3, 1fr);
+    gap: 5rem;
   }
   main section.faq .content .faq-accordions {
     width: 100%;
   }
   main section.faq .foreground-image {
     display: none;
+  }
+
+  .popup-container .popup .popup-content {
+    max-width: 80%;
+    gap: 1rem;
+  }
+  .popup-container .popup .popup-mascot {
+    height: 60%;
+    bottom: 0;
+    top: auto;
   }
 
   footer {

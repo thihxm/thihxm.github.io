@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "Pangram";
+  src: local("Pangram Medium"), local("Pangram-Medium"), url("/assets/fonts/Pangram/Pangram-Medium.woff2") format("woff2"), url("/assets/fonts/Pangram/Pangram-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pangram";
+  src: local("Pangram Regular"), local("Pangram-Regular"), url("/assets/fonts/Pangram/Pangram-Regular.woff2") format("woff2"), url("/assets/fonts/Pangram/Pangram-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pangram";
+  src: local("Pangram Light"), local("Pangram-Light"), url("/assets/fonts/Pangram/Pangram-Light.woff2") format("woff2"), url("/assets/fonts/Pangram/Pangram-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pangram";
+  src: local("Pangram ExtraBold"), local("Pangram-ExtraBold"), url("/assets/fonts/Pangram/Pangram-ExtraBold.woff2") format("woff2"), url("/assets/fonts/Pangram/Pangram-ExtraBold.woff") format("woff");
+  font-weight: bolder;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pangram";
+  src: local("Pangram Bold"), local("Pangram-Bold"), url("/assets/fonts/Pangram/Pangram-Bold.woff2") format("woff2"), url("/assets/fonts/Pangram/Pangram-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pangram";
+  src: local("Pangram Black"), local("Pangram-Black"), url("/assets/fonts/Pangram/Pangram-Black.woff2") format("woff2"), url("/assets/fonts/Pangram/Pangram-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pangram";
+  src: local("Pangram ExtraLight"), local("Pangram-ExtraLight"), url("/assets/fonts/Pangram/Pangram-ExtraLight.woff2") format("woff2"), url("/assets/fonts/Pangram/Pangram-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
