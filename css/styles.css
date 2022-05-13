@@ -952,6 +952,106 @@ html.hide-scroll {
     backdrop-filter: none;
   }
 }
+#mc_embed_signup input {
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-block: 1rem;
+  border: 2px white solid;
+  border-radius: 10000rem;
+  background-color: transparent;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+#mc_embed_signup input::placeholder {
+  font-weight: 300;
+  color: white;
+}
+
+#mc_embed_signup .button {
+  --gradient-angle: 0deg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 5.5rem;
+  height: auto;
+  line-height: normal;
+  text-align: center;
+  padding: 1rem;
+  margin: auto;
+  border: none;
+  border-radius: 100rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+  background-image: none;
+  background-color: var(--green-600);
+  font-weight: normal;
+  max-width: fit-content;
+  padding-inline: 4rem;
+  margin-top: 2rem;
+}
+#mc_embed_signup .button:hover, #mc_embed_signup .button:focus {
+  filter: brightness(0.8);
+}
+
+#mc_embed_signup .mc-field-group {
+  width: auto;
+  padding-bottom: 0;
+}
+
+#mc_embed_signup h2 {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+#mc_embed_signup .mc-field-group input {
+  padding: 1rem 0;
+  text-indent: 2rem;
+}
+
+#mc_embed_signup .foot {
+  display: block;
+  width: auto;
+}
+
+#mc_embed_signup div#mce-responses {
+  float: left;
+  top: 0;
+  padding: 0;
+  overflow: hidden;
+  width: auto;
+  margin: 0;
+  clear: both;
+}
+
+#mc_embed_signup div.response {
+  margin: 2rem 0;
+  padding: 0;
+  font-weight: bold;
+  float: left;
+  top: 0;
+  z-index: 1;
+  width: auto;
+}
+
+#mc_embed_signup #mce-success-response {
+  color: white;
+}
+
+#mc_embed_signup form {
+  padding: 0;
+}
+
 .popup-container {
   --ease: cubic-bezier(.25, 0, .3, 1);
   --squish: cubic-bezier(.5, -.5, .1, 1.5);
@@ -978,16 +1078,17 @@ html.hide-scroll {
   opacity: 0;
 }
 .popup-container .popup {
-  --popup-padding: 2rem;
+  --popup-padding: 0rem;
   position: relative;
-  max-width: 50vw;
+  width: 50vw;
+  aspect-ratio: 16/9;
   margin-inline: auto;
   min-height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--popup-padding);
+  padding-inline: var(--popup-padding);
   border-radius: 4rem;
   background-image: url("/assets/bg_popup_saida.png");
   background-position: center;
@@ -1006,7 +1107,6 @@ html.hide-scroll {
   align-items: center;
   gap: 2rem;
   padding-block: 3rem;
-  max-width: 50%;
   font-weight: 300;
 }
 .popup-container .popup .popup-content .popup-title {
@@ -1016,10 +1116,10 @@ html.hide-scroll {
   text-align: center;
 }
 .popup-container .popup .popup-content p {
-  width: 100%;
   line-height: 2;
   text-align: center;
   padding-inline: 1rem;
+  margin-bottom: 2rem;
 }
 .popup-container .popup .popup-content .popup-text-input {
   width: 100%;
@@ -1264,6 +1364,10 @@ main section.pricings .mascot-right {
     display: none;
   }
 
+  .popup-container .popup {
+    width: 90vw;
+    aspect-ratio: auto;
+  }
   .popup-container .popup .popup-content {
     max-width: 70%;
     gap: 1rem;
@@ -1308,6 +1412,10 @@ main section.pricings .mascot-right {
     display: none;
   }
 
+  .popup-container .popup {
+    width: 70vw;
+    aspect-ratio: auto;
+  }
   .popup-container .popup .popup-content {
     max-width: 80%;
     gap: 1rem;
